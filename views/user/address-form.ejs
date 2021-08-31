@@ -1,0 +1,55 @@
+<%- include('../includes/head') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <% if (errors) { %> 
+            <% for (let error of errors) { %> 
+                <div class="alert alert-danger" role="alert">
+                    <%= error.msg %> in <%= error.param %>
+                </div>    
+            <% } %>  
+        <% } %>
+        <form action="/api/create-range" method="POST">
+            <fieldset class="d-flex flex-column align-items-center border shadow w-50">
+            <div class="form-group m-2">
+                <label for="ipAddress">What is the first IP address?</label>
+                <input type="text" name="ipAddress" id="ipAddress" placeholder="10.175.xx.xx or leave blank if unknown">
+            </div>
+            <div class="form-group m-2">
+                <label for="numOfAddrs">Number of Addresses</label>
+                <input type="number" name="numOfAddrs" id="numOfAddrs">
+            </div>
+            <div class="form-group m-2">
+                <label for="description">Description: </label>
+                <input type="textarea" name="description" id="description">
+            </div>
+            <div class="form-group m-2">
+                <label for="deviceName">Device's name: </label>
+                <input type="text" name="deviceName" id="deviceName">
+            </div>
+            <div class="form-group m-2">
+                <label for="devicePlatform">Device's Platform: </label>
+                <input type="text" name="devicePlatform" id="devicePlatform">
+            </div>
+            <div class="form-group m-2">
+                <label for="hostIp">Host Ip Address: </label>
+                <input type="text" name="hostIp" id="hostIp">
+            </div>
+           <div class="form-group m-2">
+                <label for="ownerId">Owner of ip range: </label>
+                <select name="ownerId" id="ownerId">
+                    <% for (let owner of owners)  { %>
+                        <option value="<%= owner._id %>" ><%= owner.username %></option>
+                    <% } %>
+                </select>
+           </div>s
+            <div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </fieldset>
+        </form>
+    </main>
+</body>

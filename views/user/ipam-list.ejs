@@ -1,0 +1,52 @@
+<%- include('../includes/head.ejs') %>
+    <!-- <link rel="stylesheet" href='/css/ipam-list'> -->
+</head> 
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    
+    <main>
+        Hello <strong><%= user.username %></strong>
+        <% if (list.length > 0) { %>
+            <% if (user.role === 'admin') { %> 
+                there are <%=list.length %> static ranges that are in use. 
+            <%} else { %> 
+                You have at the moment <%=list.length %> range of address
+            <% } %>
+            <table class="table table-hover ">
+                <thead>
+                    <tr>
+                      <th scope="col">IP address</th>
+                      <th scope="col">Number of addresses in range</th>
+                      <th scope="col">device name</th>
+                      <th scope="col">description</th>
+                      <th scope="col">Host contains device</th>
+                      <% if (user.role ==='admin') { %>
+                       <th scope="col">Owner: </th>
+                      <%  } %>
+                    </tr>
+                  </thead>
+                  <tbody>
+                <% for (let address of list)  { %>
+                    <tr class="ipam-list-item">
+                        <td><%= address.ipAddress %></td>
+                        <td><%= address.totalAddressNumber %></td>
+                        <td><%= address.deviceName %></td>
+                        <td><%= address.description %></td>
+                        <td><%= address.hostIp %></td>
+                        <td><%= address.ownerId %></td>
+                        <td><a class="btn btn-warning" href="/api/delete/<%=address._id %>">&#10005;</a></td>
+                        <td><a class="btn btn-secondary" href="/api/<%=address._id %>">info</a></td>
+                    </tr>
+                <% } %>   
+                </tbody> 
+            </table>
+            <div href class="d-flex justify-content-center align-items-center">
+                <a class="btn btn-danger" href="/form">Add new range</a>
+
+            </div>
+        <% } else { %>
+            <h1>No Addresses at the moment</h1>
+        <% } %>  
+    </main>
+</body>

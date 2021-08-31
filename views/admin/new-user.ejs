@@ -1,0 +1,26 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form class="d-flex flex-column align-items-center" action="/create-user" method="POST" >
+        <% for (let field of fields) { %>
+            <div class="form-group m-2">
+                <label for="<%= field.name %>"><%= field.description %></label> 
+                <% if (field.name === 'role') { %> 
+                    <select  name="<%= field.name %>"><%= field.description %>
+                        <option value="user">user</option>
+                        <option value="admin">admin</option>
+                    </select>
+                    <% } else { %>
+                        <input type="<%= field.type %>" name="<%= field.name %>" id=<%= field.name %> >
+                    <% } %>
+            </div>
+        <% } %>
+        <button class="btn btn-primary" type="submit">Add user</button>
+    </form>
+    </main>
+</body>

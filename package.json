@@ -1,0 +1,30 @@
+{
+  "name": "ipam-server",
+  "version": "1.0.0",
+  "description": "ip management server-client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Jonathan Spandorf",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-mongodb-session": "^3.0.0",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.12.1",
+    "ip": "^1.1.5",
+    "mongoose": "^5.13.7",
+    "mongoose-unique-validator": "^2.0.3",
+    "ping": "^0.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "uuidv4": "^6.2.12"
+  }
+}

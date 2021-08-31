@@ -1,0 +1,30 @@
+<%- include('../includes/head.ejs') %>
+    <!-- <link rel="stylesheet" href='/css/ipam-list'> -->
+</head> 
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    
+    <main>
+        <div class="card text-center">
+            <div class="card-header">
+                Info
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Ip Address: <%= address.ipAddress %></h5>
+                <p class="card-text">Description: <%= address.description %></p>
+                <p class="card-text">Total addresses of current range: <%= address.totalAddressNumber %></p>
+                <p class="card-text">Name: <%= address.deviceName %></p>
+                <p class="card-text">Platform: <%= address.devicePlatform %></p>
+                <p class="card-text">Owner by: <%= address.ownerId %></p>
+              </div>
+            <div>
+                <a class="btn btn-secondary"  disable=>Back</a>
+                <a class="btn btn-primary" href='/api/<%= address.nextAddress %>' disable=>Next</a>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+              </div>
+        </div>
+    </main>
+</body>

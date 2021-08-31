@@ -1,0 +1,19 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form class="d-flex flex-column align-items-center" action="/signin" method="POST">
+        <% for (let field of fields) { %>
+            <div class="form-group m-2">
+                <label for="<%= field.name %>"><%= field.description %></label> 
+                <input type="<%= field.type %>" name="<%= field.name %>" id=<%= field.name %> >
+            </div>
+        <% } %>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+    </main>
+</body>
